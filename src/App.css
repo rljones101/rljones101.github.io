@@ -1,105 +1,3 @@
-@keyframes fade-bottom {
-  0% {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes fade-top {
-  0% {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes fade-left {
-  0% {
-    transform: translateX(-100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes fade-right {
-  0% {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-in-left {
-  from {
-    transform: translateX(-10em);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-in-right {
-  from {
-    transform: translateX(10em);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.reveal {
-  opacity: 0;
-  position: relative;
-}
-
-.reveal.active {
-  opacity: 1;
-}
-
-.active.fade-bottom {
-  animation: fade-bottom 1s ease-in;
-}
-
-.active.fade-top {
-  animation: fade-top 1s ease-in;
-}
-
-.active.fade-left {
-  animation: fade-left 1s ease-in;
-}
-
-.active.fade-right {
-  animation: fade-right 1s ease-in;
-}
-
-.reveal.active .slide-in-left-animation {
-  animation: slide-in-left 1s ease-in;
-}
-
-.reveal.active .slide-in-right-animation-1 {
-  animation: slide-in-right 0.5s ease-in;
-}
-.reveal.active .slide-in-right-animation-2 {
-  animation: slide-in-right 1s ease-in;
-}
-.reveal.active .slide-in-right-animation-3 {
-  animation: slide-in-right 0.9s ease-in;
-}
-
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -113,14 +11,6 @@
 #app main section {
   @apply flex flex-col;
   min-height: 500px;
-}
-
-#Portfolio {
-  /* background-color: #051437;
-  background: url("./portfolio-bg.svg");
-  background-position: center;
-  background-repeat: repeat;
-  background-size: cover; */
 }
 
 #Skills {
@@ -139,10 +29,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   transform: rotate(180deg);
-}
-
-::backdrop {
-  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .main-content-wrapper:before {
@@ -188,12 +74,6 @@
   z-index: -1;
 }
 
-.form-controls {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
 .card-project {
   @apply h-full flex flex-col;
   position: relative;
@@ -216,9 +96,6 @@
 
 .card-project .card-content {
   @apply p-8 pt-0 space-y-4 flex-1 flex flex-col justify-end;
-}
-
-.button-code {
 }
 
 .technologies {
@@ -263,15 +140,4 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-/* FONT AWESOME ICONS */
-.icon-svg.database {
-  background: url("./assets/database-solid.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  display: inline-block;
-  min-height: 1rem;
-  min-width: 1rem;
 }

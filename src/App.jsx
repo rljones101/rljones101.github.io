@@ -74,7 +74,7 @@ function App() {
   return (
     <div
       id="app"
-      className="relative max-w-7xl mx-auto p-8 background-gradient-color">
+      className="relative w-full md:max-w-7xl md:mx-auto p-4 md:p-8 background-gradient-color">
       <header className=" text-slate-100">
         <div className="flex flex-col p-12 text-center">
           <h1 className="text-center font-bold text-3xl uppercase">
@@ -100,10 +100,10 @@ function AboutMeSection() {
   return (
     <section id="AboutMe" className="hero-background">
       <Nav />
-      <div className="flex-1 flex flex-col md:flex-row justify-center items-center p-8">
+      <div className="flex-1 flex flex-col md:flex-row justify-center items-center p-4 md:p-8">
         <div className="order-2 md:order-1 flex-1">
           <p>Hello</p>
-          <h2 className="font-bold text-3xl my-4 text-black">I'm Rick</h2>
+          <h2 className="font-bold text-3xl my-4 text-black">{`I'm Rick`}</h2>
           <p className="mb-4">
             I have excelled in the high tech and web development industry for
             the past several years. Through this time, I have learned how to
@@ -138,18 +138,20 @@ function AboutMeSection() {
 
 function ProficientSkills() {
   return (
-    <div className="flex flex-col md:flex-row bg-white text-slate-300 cursor-pointer text-xl w-full items-center justify-center gap-8 border border-slate-100  p-4">
+    <div className="flex flex-row bg-white text-slate-400 cursor-pointer text-xl w-full items-center justify-center gap-8 border border-slate-100  p-4">
       <p className="text-sm text-slate-300">Proficient in:</p>
 
-      <span className=" hover:text-green-700 font-bold">
-        <i className="fa-brands fa-vuejs"></i> Vue
-      </span>
-      <span className=" hover:text-teal-200">
-        <i className="fa-brands fa-react"></i> React
-      </span>
-      <span className=" hover:text-red-500">
-        <i className="fa-brands fa-angular"></i> Angular
-      </span>
+      <div className="flex gap-4">
+        <span className=" hover:text-green-700 font-bold">
+          <i className="fa-brands fa-vuejs"></i> Vue
+        </span>
+        <span className=" hover:text-teal-200">
+          <i className="fa-brands fa-react"></i> React
+        </span>
+        <span className=" hover:text-red-500">
+          <i className="fa-brands fa-angular"></i> Angular
+        </span>
+      </div>
     </div>
   );
 }
@@ -159,7 +161,7 @@ function FeaturedSiteSection() {
     <section className="bg-slate-100">
       <ProficientSkills />
       <div className="featured flex flex-col space-y-8 pt-8 pb-8 ">
-        <div className="overflow-hidden flex flex-col md:flex-row items-center gap-8 p-8">
+        <div className="overflow-hidden flex flex-col md:flex-row items-center gap-8 p-4 md:p-8">
           <div className="md:flex-auto md:w-64 flex gap-4">
             <div>
               <img src="site-screens.png" alt="OpinonRateIt" />
@@ -191,8 +193,8 @@ function FeaturedSiteSection() {
 function PortfolioSection() {
   return (
     <section id="Portfolio">
-      <Title className="mt-8">Portfolio</Title>
-      <div className="grid grid-cols-1 md:grid-cols-2 p-8 ">
+      <Title className="py-4 md:py-0 md:mt-8">Portfolio</Title>
+      <div className="grid grid-cols-1 md:grid-cols-2 md:p-8 ">
         {projects.map((project) => (
           <Card
             key={project.id}
@@ -204,54 +206,6 @@ function PortfolioSection() {
             {project.description}
           </Card>
         ))}
-        {/* <Card
-          img="cat-facts.png"
-          githubLink={CAT_FACTS}
-          title="Cat Facts"
-          tech="React,HTML,Tailwind CSS">
-          This is a fun approval system board that is similar to Jira. This was
-          created in order to learn more about React development. It allows
-          users to create quotes, approve or deny them. It also allows the user
-          to sort each column by date.
-        </Card>
-        <Card
-          img="ds-client-portal.png"
-          githubLink={DS_METRICS_PORTAL}
-          title="Client Portal"
-          tech="Vue 2,HTML,Tailwind CSS">
-          This is a client portal that was created to allow users to login after
-          events and view specific metrics for live events. Collect analysis
-          based on a date range. Add and edit events. And also control the QR
-          codes that are used during the events.
-        </Card>
-        <Card
-          img="app-editor.png"
-          githubLink={APP_EDITOR}
-          title="App Editor"
-          tech="Vue 2,HTML,Tailwind CSS">
-          An editor that gave that provided users a way to create the live app
-          experience at a given event. It allowed them to sort the content,
-          update images, context and a "call to action" that might open a URL
-          for example.
-        </Card>
-        <Card
-          img="core-component-library.png"
-          githubLink={UI_COMPONENT_LIBRARY}
-          title="UI Component Library"
-          tech="Vue 2,HTML,CSS">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quasi
-          mollitia eum itaque quam magni quas, odit voluptatum, omnis blanditiis
-          labore beatae nobis ad dolorum repellat eveniet? Quis, est debitis.
-        </Card>
-        <Card
-          img="L7-challenge.png"
-          githubLink={L7_CHALLENGE}
-          title="L7 Challenge"
-          tech="Vue 3,HTML,Tailwind CSS">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam quasi
-          mollitia eum itaque quam magni quas, odit voluptatum, omnis blanditiis
-          labore beatae nobis ad dolorum repellat eveniet? Quis, est debitis.
-        </Card> */}
       </div>
     </section>
   );
@@ -259,9 +213,9 @@ function PortfolioSection() {
 
 function SkillsSection() {
   return (
-    <section id="Skills" className="flex flex-col justify-center">
+    <section id="Skills" className="flex flex-col justify-center pt-4 md:p-0">
       <Title>Skills</Title>
-      <div className="flex flex-col md:flex-row h-full items-stretch gap-8 z-10 p-8">
+      <div className="flex flex-col md:flex-row h-full items-stretch gap-8 z-10 p-4 md:p-8">
         <CardSkills
           title="languages"
           skills="JavaScript,TypeScript,PHP"
@@ -381,7 +335,7 @@ function Nav() {
   }
 
   return (
-    <div className="flex w-full items-center justify-between self-start p-8 pb-0">
+    <div className="flex w-full items-center justify-between p-4 md:p-8 pb-0">
       <div className="flex items-center gap-8 bg-white">
         <div className="bg-blue-500 rounded-full w-12 h-12 hidden md:flex items-center justify-center text-white font-bold text-2xl ">
           RJ
