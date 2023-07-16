@@ -69,70 +69,117 @@ const projects = [
     siteUrl: "",
   },
 ];
+// image, name, description, sourceUrl, siteUrl
+const featuredSite = {
+  image: "site-screens.png",
+  name: "OpinionRateIt",
+  description:
+    "Allows users to signup with their YouTube account. They can search for existing content from YouTube and add this to the application. It provides user feedback via metrics that other users enter and interact with. This was to created to give the reviewer insight on their reviement practice and adjust as needed.",
+  sourceUrl: OPINION_RATE_IT_LINK,
+  siteUrl: OPINION_RATE_IT_SITE,
+};
 
 function App() {
   return (
     <div
       id="app"
       className="relative w-full md:max-w-7xl md:mx-auto p-4 md:p-8 background-gradient-color">
-      <header className=" text-slate-100">
-        <div className="flex flex-col p-12 text-center">
-          <h1 className="text-center font-bold text-3xl uppercase">
-            Rick Jones
-          </h1>
-          <p>Software Frontend Lead | Frontend UI Developer</p>
-        </div>
-      </header>
-      <main className="relative shadow-2xl shadow-black bg-white">
-        <AboutMeSection />
-        <FeaturedSiteSection />
+      <Header />
+      <Main>
+        <AboutMeSection>
+          <ProfileSummary />
+          <ProfileImage />
+        </AboutMeSection>
+        <FeaturedSiteSection
+          image={featuredSite.image}
+          name={featuredSite.name}
+          description={featuredSite.description}
+          sourceUrl={featuredSite.sourceUrl}
+          siteUrl={featuredSite.siteUrl}
+        />
         <PortfolioSection />
         <SkillsSection />
-      </main>
-      <footer className="text-center p-8 text-white">
-        © by Rick Jones. All rights reserved.
-      </footer>
+      </Main>
+      <Footer />
     </div>
   );
 }
 
-function AboutMeSection() {
+function Header() {
+  return (
+    <header className=" text-slate-100">
+      <div className="flex flex-col p-12 text-center">
+        <h1 className="text-center font-bold text-3xl uppercase">Rick Jones</h1>
+        <p>Software Frontend Lead | Frontend UI Developer</p>
+      </div>
+    </header>
+  );
+}
+
+function Main({ children }) {
+  return (
+    <main className="relative shadow-2xl shadow-black bg-white">
+      {children}
+    </main>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="text-center p-8 text-white">
+      © by Rick Jones. All rights reserved.
+    </footer>
+  );
+}
+
+function AboutMeSection({ children }) {
   return (
     <section id="AboutMe" className="hero-background">
       <Nav />
       <div className="flex-1 flex flex-col md:flex-row justify-center items-center p-4 md:p-8">
-        <div className="order-2 md:order-1 flex-1">
-          <p>Hello</p>
-          <h2 className="font-bold text-3xl my-4 text-black">{`I'm Rick`}</h2>
-          <p className="mb-4">
-            I have excelled in the high tech and web development industry for
-            the past several years. Through this time, I have learned how to
-            manage and develop projects by asking and understanding “what is the
-            business value?”, knowing the business roadmap and talking daily
-            with fellow team members on how to achieve this in order for
-            everyone to be successful! This approach helps me effectively
-            manage, conceptualize, and execute on any given project.
-          </p>
-          <div className="flex items-center gap-8">
-            <Button link="https://www.linkedin.com/in/rickljones/">
-              Learn More
-            </Button>
-          </div>
-        </div>
-        <div className="order-1 md:order-2 flex-1 flex flex-col items-center justify-center relative">
-          <img
-            alt="Rick"
-            src="profile-pic.jpg"
-            className="relative rounded-full  z-30 border-4 border-white"
-            style={{
-              objectFit: "cover",
-              width: "300px",
-              height: "300px",
-            }}
-          />
-        </div>
+        {children}
       </div>
     </section>
+  );
+}
+
+function ProfileSummary() {
+  return (
+    <div className="order-2 md:order-1 flex-1">
+      <p>Hello</p>
+      <h2 className="font-bold text-3xl my-4 text-black">{`I'm Rick`}</h2>
+      <p className="mb-4">
+        I have excelled in the high tech and web development industry for the
+        past several years. Through this time, I have learned how to manage and
+        develop projects by asking and understanding “what is the business
+        value?”, knowing the business roadmap and talking daily with fellow team
+        members on how to achieve this in order for everyone to be successful!
+        This approach helps me effectively manage, conceptualize, and execute on
+        any given project.
+      </p>
+      <div className="flex items-center gap-8">
+        <Button link="https://www.linkedin.com/in/rickljones/">
+          Learn More
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function ProfileImage() {
+  return (
+    <div className="order-1 md:order-2 flex-1 flex flex-col items-center justify-center relative">
+      <img
+        alt="Rick"
+        src="profile-pic.jpg"
+        className="relative rounded-full  z-30 border-4 border-white"
+        style={{
+          objectFit: "cover",
+          width: "300px",
+          height: "300px",
+        }}
+      />
+    </div>
   );
 }
 
@@ -156,33 +203,22 @@ function ProficientSkills() {
   );
 }
 
-function FeaturedSiteSection() {
+function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
   return (
     <section className="bg-slate-100">
       <ProficientSkills />
-      <div className="featured flex flex-col space-y-8 pt-8 pb-8 ">
-        <div className="overflow-hidden flex flex-col md:flex-row items-center gap-8 p-4 md:p-8">
-          <div className="md:flex-auto md:w-64 flex gap-4">
-            <div>
-              <img src="site-screens.png" alt="OpinonRateIt" />
-            </div>
-          </div>
-          <div className="md:flex-auto md:w-32">
-            <h2 className="uppercase font-bold mt-8 text-black">Featured</h2>
-            <h3 className="text-2xl uppercase mb-4 text-blue-500">
-              OpinionRateIt
-            </h3>
-            <p className="mb-4">
-              Allows users to signup with their YouTube account. They can search
-              for existing content from YouTube and add this to the application.
-              It provides user feedback via metrics that other users enter and
-              interact with. This was to created to give the reviewer insight on
-              their reviement practice and adjust as needed.
-            </p>
-            <div className="flex gap-2">
-              <GitHubButton link={OPINION_RATE_IT_LINK}>Source</GitHubButton>
-              <Button link={OPINION_RATE_IT_SITE}>Website</Button>
-            </div>
+
+      <div className="overflow-hidden flex flex-col md:flex-row items-center gap-8 p-4 md:p-8">
+        <div className="md:flex-auto md:w-64 flex gap-4">
+          <img src={image} alt="OpinonRateIt" />
+        </div>
+        <div className="md:flex-auto md:w-32">
+          <h2 className="uppercase font-bold mt-8 text-black">Featured</h2>
+          <h3 className="text-2xl uppercase mb-4 text-blue-500">{name}</h3>
+          <p className="mb-4">{description}</p>
+          <div className="flex gap-2">
+            <GitHubButton link={sourceUrl}>Source</GitHubButton>
+            <Button link={siteUrl}>Website</Button>
           </div>
         </div>
       </div>
@@ -202,7 +238,7 @@ function PortfolioSection() {
             githubLink={project.sourceUrl}
             siteLink={project.siteUrl}
             title={project.name}
-            tech={project.tech}>
+            technologySkills={project.tech}>
             {project.description}
           </Card>
         ))}
@@ -274,23 +310,14 @@ function CardSkills({ customIcon, icon, title, skills }) {
   );
 }
 
-function Card({ img, tech, title, siteLink, githubLink, children }) {
-  let technologySkills = [];
-
-  if (tech) {
-    technologySkills = tech;
-  }
-
-  const techClass = (tech) => {
-    if (tech === "Vue 2" || tech === "Vue 3") return "tech-vue";
-    if (tech === "HTML") return "tech-html";
-    if (tech === "Tailwind CSS" || tech === "CSS") return "tech-tailwind";
-    if (tech === "Node") return "tech-node";
-    if (tech === "Express") return "tech-express";
-    if (tech === "MongoDB") return "tech-mongodb";
-    if (tech === "React") return "tech-react";
-  };
-
+function Card({
+  img,
+  technologySkills = [],
+  title,
+  siteLink,
+  githubLink,
+  children,
+}) {
   return (
     <div>
       <div className="group card-project flex flex-col items-center border border-slate-100">
@@ -309,10 +336,8 @@ function Card({ img, tech, title, siteLink, githubLink, children }) {
           <h2 className=" ">{title}</h2>
           <div className="flex-1 h-full">
             <div className="technologies">
-              {technologySkills.map((techItem) => (
-                <span key={techItem} className={`tech ${techClass(techItem)}`}>
-                  {techItem}
-                </span>
+              {technologySkills.map((tech) => (
+                <CardTechItem tech={tech} key={tech} />
               ))}
             </div>
             {children}
@@ -327,6 +352,20 @@ function Card({ img, tech, title, siteLink, githubLink, children }) {
       </div>
     </div>
   );
+}
+
+function CardTechItem({ tech }) {
+  const techClass = (tech) => {
+    if (tech === "Vue 2" || tech === "Vue 3") return "tech-vue";
+    if (tech === "HTML") return "tech-html";
+    if (tech === "Tailwind CSS" || tech === "CSS") return "tech-tailwind";
+    if (tech === "Node") return "tech-node";
+    if (tech === "Express") return "tech-express";
+    if (tech === "MongoDB") return "tech-mongodb";
+    if (tech === "React") return "tech-react";
+  };
+
+  return <span className={`tech ${techClass(tech)}`}>{tech}</span>;
 }
 
 function Nav() {
