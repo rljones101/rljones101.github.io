@@ -208,12 +208,12 @@ function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
     <section className="bg-slate-100">
       <ProficientSkills />
 
-      <div className="overflow-hidden flex flex-col md:flex-row items-center gap-8 p-4 md:p-8">
+      <div className="overflow-hidden flex flex-col md:flex-row items-center gap-4 p-4 md:gap-8 md:p-8">
         <div className="md:flex-auto md:w-64 flex gap-4">
           <img src={image} alt="OpinonRateIt" />
         </div>
         <div className="md:flex-auto md:w-32">
-          <h2 className="uppercase font-bold mt-8 text-black">Featured</h2>
+          <h2 className="uppercase font-bold text-black">Featured</h2>
           <h3 className="text-2xl uppercase mb-4 text-blue-500">{name}</h3>
           <p className="mb-4">{description}</p>
           <div className="flex gap-2">
@@ -321,7 +321,7 @@ function Card({
   return (
     <div>
       <div className="group card-project flex flex-col items-center border border-slate-100">
-        <div className="overflow-hidden m-8">
+        <div className="overflow-hidden m-4 md:m-8">
           <img
             src={img}
             alt={title}
