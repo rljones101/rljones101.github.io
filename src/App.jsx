@@ -1,10 +1,6 @@
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import { HashLink } from "react-router-hash-link";
-
-// Source URLs
-const OPINION_RATE_IT_LINK =
-  "https://gitfront.io/r/rljones101/RVLYyHZkZ835/opinionrateit-site/";
-const OPINION_RATE_IT_SITE = "https://dev.opinionrateit.com/";
 
 const projects = [
   {
@@ -13,9 +9,10 @@ const projects = [
     name: "OpinionRateIt",
     tech: ["Vue 3", "HTML", "Tailwind CSS", "Node", "Express", "MongoDB"],
     description:
-      "Allows users to signup with their YouTube account. They can search for existing content from YouTube and add this to the application. It provides user feedback via metrics that other users enter and interact with. This was to created to give the reviewer insight on their reviement practice and adjust as needed.",
-    sourceUrl: OPINION_RATE_IT_LINK,
-    siteUrl: OPINION_RATE_IT_SITE,
+      "Allows users to signup with their YouTube account. They can search for existing content from YouTube and add this to the application. It provides user feedback via metrics that other users enter and interact with. This was to created to give the reviewer insight on their review content and adjust as needed.",
+    sourceUrl:
+      "https://gitfront.io/r/rljones101/RVLYyHZkZ835/opinionrateit-site/",
+    siteUrl: "https://dev.opinionrateit.com/",
   },
   {
     id: 2,
@@ -69,17 +66,26 @@ const projects = [
     siteUrl: "",
   },
 ];
-// image, name, description, sourceUrl, siteUrl
-const featuredSite = {
-  image: "site-screens.png",
-  name: "OpinionRateIt",
-  description:
-    "Allows users to signup with their YouTube account. They can search for existing content from YouTube and add this to the application. It provides user feedback via metrics that other users enter and interact with. This was to created to give the reviewer insight on their reviement practice and adjust as needed.",
-  sourceUrl: OPINION_RATE_IT_LINK,
-  siteUrl: OPINION_RATE_IT_SITE,
-};
+
+let timeID = 0;
 
 function App() {
+  const [index, setIndex] = useState(0);
+  const [featuredProject, setFeaturedProject] = useState({
+    ...projects[0],
+  });
+
+  timeID = setTimeout(() => {
+    if (index < projects.length - 1) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+
+    setFeaturedProject(projects[index]);
+    clearTimeout(timeID);
+  }, 10000);
+
   return (
     <div
       id="app"
@@ -90,12 +96,13 @@ function App() {
           <ProfileSummary />
           <ProfileImage />
         </AboutMeSection>
+        <ProficientSkills />
         <FeaturedSiteSection
-          image={featuredSite.image}
-          name={featuredSite.name}
-          description={featuredSite.description}
-          sourceUrl={featuredSite.sourceUrl}
-          siteUrl={featuredSite.siteUrl}
+          image={featuredProject.image}
+          name={featuredProject.name}
+          description={featuredProject.description}
+          sourceUrl={featuredProject.sourceUrl}
+          siteUrl={featuredProject.siteUrl}
         />
         <PortfolioSection />
         <SkillsSection />
@@ -204,21 +211,31 @@ function ProficientSkills() {
 }
 
 function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
-  return (
-    <section className="bg-slate-100">
-      <ProficientSkills />
+  const [isFading, setIsFading] = useState(false);
 
-      <div className="overflow-hidden flex flex-col md:flex-row items-center gap-4 p-4 md:gap-8 md:p-8">
-        <div className="md:flex-auto md:w-64 flex gap-4">
-          <img src={image} alt="OpinonRateIt" />
+  useEffect(() => {
+    setIsFading(true);
+    setTimeout(() => {
+      setIsFading(false);
+    }, 2000);
+  }, [image]);
+
+  return (
+    <section className="bg-slate-100 flex justify-center">
+      <div
+        className={`overflow-hidden transition-all flex flex-col md:flex-row justify-center items-center gap-4 p-4 md:gap-8 md:p-8 ${
+          isFading ? "animate-fade-in" : "animate-fade-done"
+        }`}>
+        <div className="md:flex-auto md:w-64 flex gap-4 shadow-lg shadow-gray-300 transition-all">
+          <img src={image} alt={name} />
         </div>
         <div className="md:flex-auto md:w-32">
           <h2 className="uppercase font-bold text-black">Featured</h2>
           <h3 className="text-2xl uppercase mb-4 text-blue-500">{name}</h3>
           <p className="mb-4">{description}</p>
           <div className="flex gap-2">
-            <GitHubButton link={sourceUrl}>Source</GitHubButton>
-            <Button link={siteUrl}>Website</Button>
+            {sourceUrl && <GitHubButton link={sourceUrl}>Source</GitHubButton>}
+            {siteUrl && <Button link={siteUrl}>Website</Button>}
           </div>
         </div>
       </div>
