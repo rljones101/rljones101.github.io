@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { HashLink } from "react-router-hash-link";
 
@@ -67,24 +67,22 @@ const projects = [
   },
 ];
 
-let timeID = 0;
-
 function App() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(1);
   const [featuredProject, setFeaturedProject] = useState({
     ...projects[0],
   });
 
-  timeID = setTimeout(() => {
-    if (index < projects.length - 1) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
-
-    setFeaturedProject(projects[index]);
-    clearTimeout(timeID);
-  }, 10000);
+  useEffect(() => {
+    setTimeout(() => {
+      if (index < projects.length - 1) {
+        setIndex(index + 1);
+      } else {
+        setIndex(0);
+      }
+      setFeaturedProject(projects[index]);
+    }, 10000);
+  });
 
   return (
     <div
@@ -210,24 +208,42 @@ function ProficientSkills() {
   );
 }
 
-function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
-  const [isFading, setIsFading] = useState(false);
+function Transition({ name, className, children }) {
+  const [changed, setChanged] = useState(false);
 
   useEffect(() => {
-    setIsFading(true);
+    setChanged(true);
     setTimeout(() => {
-      setIsFading(false);
+      setChanged(false);
     }, 2000);
-  }, [image]);
+  }, [children]);
 
   return (
+    <div className={className + (changed ? ` ${name}` : ` ${name}-done`)}>
+      {children}
+    </div>
+  );
+}
+
+function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
+  return (
     <section className="bg-slate-100 flex justify-center">
-      <div
-        className={`overflow-hidden transition-all flex flex-col md:flex-row justify-center items-center gap-4 p-4 md:gap-8 md:p-8 ${
-          isFading ? "animate-fade-in" : "animate-fade-done"
-        }`}>
-        <div className="md:flex-auto md:w-64 flex gap-4 shadow-lg shadow-gray-300 transition-all">
-          <img src={image} alt={name} />
+      <Transition
+        variable={image}
+        name="animate-fade-in"
+        className="overflow-hidden transition-all flex flex-col md:flex-row justify-center items-center gap-4 p-4 md:gap-8 md:p-8">
+        <div className="md:flex-auto md:w-64 flex gap-4 transition-all">
+          <img
+            src={image}
+            alt={name}
+            style={{
+              objectFit: "cover",
+              objectPosition: "top",
+              height: "435px",
+              aspectRatio: "2/1",
+            }}
+            className="shadow-lg shadow-gray-300 "
+          />
         </div>
         <div className="md:flex-auto md:w-32">
           <h2 className="uppercase font-bold text-black">Featured</h2>
@@ -238,7 +254,7 @@ function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
             {siteUrl && <Button link={siteUrl}>Website</Button>}
           </div>
         </div>
-      </div>
+      </Transition>
     </section>
   );
 }
@@ -344,7 +360,8 @@ function Card({
             alt={title}
             style={{
               objectFit: "cover",
-              aspectRatio: 1 / 1,
+              objectPosition: "top",
+              aspectRatio: 4 / 3,
             }}
             className=" transition-all group-hover:scale-110"
           />
