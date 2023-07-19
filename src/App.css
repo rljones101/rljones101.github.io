@@ -7,7 +7,7 @@
   }
 }
 
-.animate-fade-in {
+.fade-animation {
   animation: fadeIn 300ms ease-in;
 }
 

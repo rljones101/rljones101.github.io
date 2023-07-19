@@ -67,6 +67,12 @@ const projects = [
   },
 ];
 
+function openUrl(link) {
+  if (link) {
+    window.open(link, "mozillaTab");
+  }
+}
+
 function App() {
   const [index, setIndex] = useState(1);
   const [featuredProject, setFeaturedProject] = useState({
@@ -74,15 +80,16 @@ function App() {
   });
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (index < projects.length - 1) {
         setIndex(index + 1);
       } else {
         setIndex(0);
       }
       setFeaturedProject(projects[index]);
+      return () => clearTimeout(timer);
     }, 10000);
-  });
+  }, [featuredProject, index]);
 
   return (
     <div
@@ -162,12 +169,37 @@ function ProfileSummary() {
         This approach helps me effectively manage, conceptualize, and execute on
         any given project.
       </p>
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-2">
         <Button link="https://www.linkedin.com/in/rickljones/">
           Learn More
         </Button>
+        <button
+          className="flex items-center text-blue-500 font-bold border-black gap-2 hover:bg-gradient-to-b from-blue-500 to-blue-700 hover:bg-blue-600  hover:scale-105 shadow-none hover:shadow-lg hover:shadow-gray-600 transition-all hover:text-white py-2 px-4 uppercase rounded-lg button-code"
+          onClick={() => openUrl("./RickJonesResumeNC.pdf")}>
+          <DocumentDownloadIcon /> Resume
+        </button>
       </div>
     </div>
+  );
+}
+
+function DocumentDownloadIcon() {
+  return (
+    <span className="w-4 h-4">
+      <svg
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
+        />
+      </svg>
+    </span>
   );
 }
 
@@ -208,7 +240,7 @@ function ProficientSkills() {
   );
 }
 
-function Transition({ name, className, children }) {
+function Transition({ variable, name, className, children }) {
   const [changed, setChanged] = useState(false);
 
   useEffect(() => {
@@ -216,10 +248,13 @@ function Transition({ name, className, children }) {
     setTimeout(() => {
       setChanged(false);
     }, 2000);
-  }, [children]);
+  }, [variable]);
 
   return (
-    <div className={className + (changed ? ` ${name}` : ` ${name}-done`)}>
+    <div
+      className={
+        className + (changed ? ` ${name}-animation` : ` ${name}-done`)
+      }>
       {children}
     </div>
   );
@@ -229,8 +264,8 @@ function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
   return (
     <section className="bg-slate-100 flex justify-center">
       <Transition
-        variable={image}
-        name="animate-fade-in"
+        variable={name}
+        name="fade"
         className="overflow-hidden transition-all flex flex-col md:flex-row justify-center items-center gap-4 p-4 md:gap-8 md:p-8">
         <div className="md:flex-auto md:w-64 flex gap-4 transition-all">
           <img
@@ -452,7 +487,7 @@ function GitHubButton({ link, children }) {
   }
   return (
     <button
-      className="bg-gradient-to-b from-gray-500 to-gray-700 hover:bg-gray-600 hover:scale-105 shadow-none hover:shadow-lg hover:shadow-gray-600 transition-all text-white py-2 px-4 uppercase rounded-lg button-code"
+      className="font-bold bg-gradient-to-b from-gray-500 to-gray-700 hover:bg-gray-600 hover:scale-105 shadow-none hover:shadow-lg hover:shadow-gray-600 transition-all text-white py-2 px-4 uppercase rounded-lg button-code"
       onClick={() => openUrl()}>
       <i className=" hover:text-slate-200 fa-brands fa-github mr-1" />
       {children}
@@ -473,7 +508,7 @@ function Button({ link, onClick, children }) {
 
   return (
     <button
-      className="bg-gradient-to-b from-blue-500 to-blue-700 hover:bg-blue-600 hover:scale-105 shadow-none hover:shadow-lg hover:shadow-gray-600 transition-all text-white py-2 px-4 uppercase rounded-lg button-code"
+      className="font-bold bg-gradient-to-b from-blue-500 to-blue-700 hover:bg-blue-600 hover:scale-105 shadow-none hover:shadow-lg hover:shadow-gray-600 transition-all text-white py-2 px-4 uppercase rounded-lg button-code"
       onClick={() => openUrl()}>
       {children}
     </button>
