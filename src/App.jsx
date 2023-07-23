@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import "./App.css";
 import { HashLink } from "react-router-hash-link";
 
@@ -87,29 +87,51 @@ const projects = [
   },
 ];
 
+const featuredSite = {
+  ...projects[0],
+  featuredImages: ["videos.png", "reviewers.png", "stats.png", "profile.png"],
+};
+
+const initialState = {
+  featuredProject: { ...featuredSite },
+  index: 0,
+  currImage: featuredSite.featuredImages[0],
+};
+
 function openUrl(link) {
   if (link) {
     window.open(link, "mozillaTab");
   }
 }
 
+function reducer(state, action) {
+  const numImages = state.featuredProject.featuredImages.length;
+  switch (action.type) {
+    case "next": {
+      const index = state.index < numImages - 1 ? state.index + 1 : 0;
+      return {
+        ...state,
+        index,
+        currImage: state.featuredProject.featuredImages.at(index),
+      };
+    }
+    default:
+      throw new Error("Action not defined");
+  }
+}
+
 function App() {
-  const [index, setIndex] = useState(1);
-  const [featuredProject, setFeaturedProject] = useState({
-    ...projects[0],
-  });
+  const [{ index, featuredProject, currImage }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (index < projects.length - 1) {
-        setIndex(index + 1);
-      } else {
-        setIndex(0);
-      }
-      setFeaturedProject(projects[index]);
-      return () => clearTimeout(timer);
+    const timerId = setTimeout(() => {
+      dispatch({ type: "next" });
     }, 10000);
-  }, [featuredProject, index]);
+    return () => clearTimeout(timerId);
+  }, [index]);
 
   return (
     <div
@@ -123,7 +145,7 @@ function App() {
         </AboutMeSection>
         <ProficientSkills />
         <FeaturedSiteSection
-          image={featuredProject.image}
+          image={currImage}
           name={featuredProject.name}
           description={featuredProject.description}
           sourceUrl={featuredProject.sourceUrl}
@@ -284,11 +306,11 @@ function Transition({ variable, name, className, children }) {
 function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
   return (
     <section className="bg-slate-100 flex justify-center">
-      <Transition
-        variable={name}
-        name="fade"
-        className="overflow-hidden transition-all flex flex-col md:flex-row justify-center items-center gap-4 p-4 md:gap-8 md:p-8">
-        <div className="md:flex-auto md:w-64 flex gap-4 transition-all">
+      <div className="overflow-hidden transition-all flex flex-col md:flex-row justify-center items-center gap-4 p-4 md:gap-8 md:p-8">
+        <Transition
+          variable={image}
+          name="fade"
+          className="md:flex-auto md:w-64 flex gap-4 transition-all">
           <img
             src={image}
             alt={name}
@@ -300,7 +322,7 @@ function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
             }}
             className="shadow-lg shadow-gray-300 "
           />
-        </div>
+        </Transition>
         <div className="md:flex-auto md:w-32">
           <h2 className="uppercase font-bold text-black">Featured</h2>
           <h3 className="text-2xl uppercase mb-4 text-blue-500">{name}</h3>
@@ -310,7 +332,7 @@ function FeaturedSiteSection({ image, name, description, sourceUrl, siteUrl }) {
             {siteUrl && <Button link={siteUrl}>Website</Button>}
           </div>
         </div>
-      </Transition>
+      </div>
     </section>
   );
 }
