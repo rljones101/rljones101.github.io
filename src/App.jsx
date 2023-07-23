@@ -65,6 +65,26 @@ const projects = [
     sourceUrl: "https://github.com/rljones101/l7-challenge-2",
     siteUrl: "",
   },
+  {
+    id: 7,
+    image: "react-quiz.png",
+    name: "The React Quiz",
+    tech: ["React", "HTML", "CSS"],
+    description:
+      'This is a small Quiz application that uses the "useReducer" hook to manage state. It will track answers choosen, show the correct answer. Allows the quiz to be completed with-in a certain amount of time. Shows the current question and the total amount. And will provide final feedback of well the user answered all the questions.',
+    sourceUrl: "https://github.com/rljones101/react-quiz",
+    siteUrl: "",
+  },
+  {
+    id: 8,
+    image: "classy-weather.png",
+    name: "Classy Weather",
+    tech: ["React", "HTML", "CSS"],
+    description:
+      "This is a simple weather application where the user can provide a location and get the weather for today and the rest of the week.",
+    sourceUrl: "https://github.com/rljones101/react-classy-weather-poc",
+    siteUrl: "",
+  },
 ];
 
 function openUrl(link) {
@@ -245,9 +265,10 @@ function Transition({ variable, name, className, children }) {
 
   useEffect(() => {
     setChanged(true);
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       setChanged(false);
     }, 2000);
+    return () => clearTimeout(timerId);
   }, [variable]);
 
   return (
