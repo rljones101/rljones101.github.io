@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 import "../App.css";
 import Header from "./Header";
 import Main from "./Main";
+import Nav from "./Nav";
 import Footer from "./Footer";
 import AboutMeSection from "./AboutMe";
 import ProfileSummary from "./ProfileSummary";
@@ -137,11 +138,10 @@ function App() {
   }, [index]);
 
   return (
-    <div
-      id="app"
-      className="relative w-full md:max-w-7xl md:mx-auto p-4 md:p-8 background-gradient-color">
+    <div id="app" className="main-content-wrapper">
       <Header />
       <Main>
+        <Nav />
         <AboutMeSection>
           <ProfileSummary />
           <ProfileImage />

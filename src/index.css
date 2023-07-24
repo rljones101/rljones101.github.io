@@ -4,6 +4,68 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  #app {
+    @apply space-y-8;
+  }
+
+  #app main section {
+    @apply flex flex-col;
+  }
+
+  .main-content-wrapper {
+    @apply relative w-full md:max-w-7xl md:mx-auto p-4 md:p-8 scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-slate-800;
+  }
+
+  .card-project {
+    @apply h-full flex flex-col;
+  }
+
+  .card-project h2 {
+    @apply text-lg font-bold uppercase;
+  }
+
+  .card-project .card-content {
+    @apply p-4 pt-0 md:p-8 md:pt-0 space-y-4 flex-1 flex flex-col justify-end;
+  }
+
+  .technologies {
+    @apply flex flex-wrap gap-2 items-center py-4 pt-0;
+  }
+
+  .tech {
+    @apply text-xs py-1 px-2 text-white rounded-lg;
+  }
+
+  .tech-vue {
+    @apply bg-green-700;
+  }
+
+  .tech-node {
+    @apply bg-green-800;
+  }
+
+  .tech-html {
+    @apply bg-blue-700;
+  }
+
+  .tech-tailwind {
+    @apply bg-blue-400;
+  }
+
+  .tech-express {
+    @apply bg-gray-500;
+  }
+
+  .tech-mongodb {
+    @apply bg-green-400;
+  }
+
+  .tech-react {
+    @apply bg-teal-500;
+  }
+}
+
 /* semantic color variables for this project */
 :root {
   --color-links-and-buttons: hsla(25, 95%, 53%, 1);

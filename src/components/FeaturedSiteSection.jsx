@@ -10,7 +10,7 @@ export default function FeaturedSiteSection({
   siteUrl,
 }) {
   return (
-    <section className="bg-slate-100 flex justify-center">
+    <section className="bg-blue-50 flex justify-center">
       <div className="overflow-hidden transition-all flex flex-col md:flex-row justify-center items-center gap-4 p-4 md:gap-8 md:p-8">
         <Transition
           variable={image}

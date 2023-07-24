@@ -16,13 +16,11 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 #app {
-  @apply space-y-8;
   margin: 0 auto;
   font-weight: normal;
 }
 
 #app main section {
-  @apply flex flex-col;
   min-height: 500px;
 }
 
@@ -44,18 +42,19 @@
   transform: rotate(180deg);
 }
 
-.main-content-wrapper:before {
-  content: "";
-  display: block;
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(to top, #f77216, #051437);
-  background-size: cover;
-  z-index: -1;
-}
 .main-content-wrapper {
   position: relative;
-  @apply scrollbar-thin scrollbar-thumb-orange-500 scrollbar-track-slate-800;
+}
+
+.main-content-wrapper:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to top, #256de1, #051437);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: contain;
+  z-index: -1;
 }
 
 .background-gradient-color {
@@ -67,7 +66,6 @@
   position: fixed;
   inset: 0;
   background: linear-gradient(to top, #256de1, #051437);
-  /* background: url("./portfolio-bg.svg"); */
   background-position: center;
   background-repeat: repeat;
   background-size: contain;
@@ -88,7 +86,6 @@
 }
 
 .card-project {
-  @apply h-full flex flex-col;
   position: relative;
   z-index: 1;
 }
@@ -101,50 +98,6 @@
   background-color: white;
   z-index: -1;
   opacity: 0.7;
-}
-
-.card-project h2 {
-  @apply text-lg font-bold uppercase;
-}
-
-.card-project .card-content {
-  @apply p-4 pt-0 md:p-8 md:pt-0 space-y-4 flex-1 flex flex-col justify-end;
-}
-
-.technologies {
-  @apply flex flex-wrap gap-2 items-center py-4 pt-0;
-}
-
-.tech {
-  @apply text-xs py-1 px-2 text-white rounded-lg;
-}
-
-.tech-vue {
-  @apply bg-green-700;
-}
-
-.tech-node {
-  @apply bg-green-800;
-}
-
-.tech-html {
-  @apply bg-blue-700;
-}
-
-.tech-tailwind {
-  @apply bg-blue-400;
-}
-
-.tech-express {
-  @apply bg-gray-500;
-}
-
-.tech-mongodb {
-  @apply bg-green-400;
-}
-
-.tech-react {
-  @apply bg-teal-500;
 }
 
 .hero-background {
