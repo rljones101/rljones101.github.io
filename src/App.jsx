@@ -250,7 +250,7 @@ function ProfileImage() {
     <div className="order-1 md:order-2 flex-1 flex flex-col items-center justify-center relative">
       <img
         alt="Rick"
-        src="profile-pic.jpg"
+        src="profile-pic-2.png"
         className="relative rounded-full  z-30 border-4 border-white"
         style={{
           objectFit: "cover",
