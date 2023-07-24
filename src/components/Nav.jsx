@@ -18,10 +18,10 @@ export default function Nav() {
       <div className="flex gap-4 text-blue-500  text-2xl">
         <button
           onClick={() => openUrl("https://www.linkedin.com/in/rickljones/")}>
-          <i className=" hover:text-slate-200 fa-brands fa-linkedin" />
+          <i className=" hover:text-blue-400 fa-brands fa-linkedin" />
         </button>
         <button onClick={() => openUrl("https://github.com/rljones101")}>
-          <i className=" hover:text-slate-200 fa-brands fa-github" />
+          <i className=" hover:text-blue-400 fa-brands fa-github" />
         </button>
       </div>
     </div>
