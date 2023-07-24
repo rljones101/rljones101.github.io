@@ -17,9 +17,6 @@
   font-weight: normal;
 }
 
-html {
-}
-
 body {
   margin: 0;
   position: relative;
@@ -36,7 +33,4 @@ body {
 
 a:hover {
   text-decoration: none;
-}
-
-#root {
 }
