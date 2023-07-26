@@ -1,4 +1,3 @@
-import { useEffect, useReducer } from "react";
 import "../App.css";
 import Header from "./Header";
 import Main from "./Main";
@@ -11,6 +10,7 @@ import ProficientSkills from "./ProficientSkills";
 import FeaturedSiteSection from "./FeaturedSiteSection";
 import PortfolioSection from "./PortfolioSection";
 import SkillsSection from "./SkillsSection";
+import { useFeaturedImages } from "../useFeaturedImages";
 
 const projects = [
   {
@@ -97,48 +97,17 @@ const projects = [
   },
 ];
 
-const featuredSite = {
+const featuredProject = {
   ...projects[0],
   featuredImages: ["videos.png", "reviewers.png", "stats.png", "profile.png"],
 };
 
-const INITIAL_INDEX = 0;
-
 const initialState = {
-  featuredProject: { ...featuredSite },
-  index: INITIAL_INDEX,
-  currImage: featuredSite.featuredImages[INITIAL_INDEX],
+  featuredImages: featuredProject.featuredImages,
 };
 
-function reducer(state, action) {
-  const numImages = state.featuredProject.featuredImages.length;
-  switch (action.type) {
-    case "next": {
-      const index =
-        state.index < numImages - 1 ? state.index + 1 : INITIAL_INDEX;
-      return {
-        ...state,
-        index,
-        currImage: state.featuredProject.featuredImages.at(index),
-      };
-    }
-    default:
-      throw new Error("Action not defined");
-  }
-}
-
 function App() {
-  const [{ index, featuredProject, currImage }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
-
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      dispatch({ type: "next" });
-    }, 10000);
-    return () => clearTimeout(timerId);
-  }, [index]);
+  const { image } = useFeaturedImages(initialState);
 
   return (
     <div id="app" className="main-content-wrapper">
@@ -151,7 +120,7 @@ function App() {
         </AboutMeSection>
         <ProficientSkills />
         <FeaturedSiteSection
-          image={currImage}
+          image={image}
           name={featuredProject.name}
           description={featuredProject.description}
           sourceUrl={featuredProject.sourceUrl}
