@@ -1,6 +1,7 @@
 import Button from "./Button";
 import GitHubButton from "./GitHubButton";
 import Transition from "./Transition";
+import Image from "./Image";
 
 export default function FeaturedSiteSection({
   image,
@@ -16,16 +17,10 @@ export default function FeaturedSiteSection({
           variable={image}
           name="fade"
           className="md:flex-auto md:w-64 flex gap-4 transition-all">
-          <img
-            src={image}
-            alt={name}
-            style={{
-              objectFit: "cover",
-              objectPosition: "top",
-              height: "435px",
-              aspectRatio: "2/1",
-            }}
-            className="shadow-lg shadow-gray-300 "
+          <Image
+            img={image}
+            title={name}
+            className="shadow-lg shadow-gray-300"
           />
         </Transition>
         <div className="md:flex-auto md:w-32">

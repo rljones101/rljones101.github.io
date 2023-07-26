@@ -1,6 +1,7 @@
 import GitHubButton from "./GitHubButton";
 import Button from "./Button";
 import CardTechItem from "./CardTechItem";
+import Image from "./Image";
 
 export default function Card({
   img,
@@ -14,15 +15,10 @@ export default function Card({
     <div>
       <div className="group card-project flex flex-col items-center border border-slate-100">
         <div className="overflow-hidden m-4 md:m-8">
-          <img
-            src={img}
-            alt={title}
-            style={{
-              objectFit: "cover",
-              objectPosition: "top",
-              aspectRatio: 4 / 3,
-            }}
-            className=" transition-all group-hover:scale-110"
+          <Image
+            img={img}
+            title={title}
+            className="transition-all group-hover:scale-110"
           />
         </div>
         <div className="card-content">
