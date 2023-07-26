@@ -102,17 +102,20 @@ const featuredSite = {
   featuredImages: ["videos.png", "reviewers.png", "stats.png", "profile.png"],
 };
 
+const INITIAL_INDEX = 0;
+
 const initialState = {
   featuredProject: { ...featuredSite },
-  index: 0,
-  currImage: featuredSite.featuredImages[0],
+  index: INITIAL_INDEX,
+  currImage: featuredSite.featuredImages[INITIAL_INDEX],
 };
 
 function reducer(state, action) {
   const numImages = state.featuredProject.featuredImages.length;
   switch (action.type) {
     case "next": {
-      const index = state.index < numImages - 1 ? state.index + 1 : 0;
+      const index =
+        state.index < numImages - 1 ? state.index + 1 : INITIAL_INDEX;
       return {
         ...state,
         index,
