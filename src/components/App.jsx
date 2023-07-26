@@ -81,7 +81,7 @@ const projects = [
     name: "The React Quiz",
     tech: ["React", "HTML", "CSS"],
     description:
-      'This is a small Quiz application that uses the "useReducer" hook to manage state. It will track answers choosen, show the correct answer. Allows the quiz to be completed with-in a certain amount of time. Shows the current question and the total amount. And will provide final feedback of well the user answered all the questions.',
+      'This is a small Quiz application that uses the "useReducer" hook to manage state. It tracks answers choosen and will show the correct answer. The UI contains a timer that will end the quiz if not completed in a certain amount of time. It also provides the current question and the total amount of questions that are being asked. When the user has completed the quiz, it will give the user a score based on the correct answers that were given.',
     sourceUrl: "https://github.com/rljones101/react-quiz",
     siteUrl: "",
   },
