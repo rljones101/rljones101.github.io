@@ -1,7 +1,9 @@
 import Title from "./Title";
 import Card from "./Card";
+import { useProjects } from "../context/ProjectsProvider";
 
-export default function PortfolioSection({ projects }) {
+export default function PortfolioSection() {
+  const { projects } = useProjects();
   return (
     <section id="Portfolio">
       <Title className="py-4 md:py-0 md:mt-8">Portfolio</Title>
