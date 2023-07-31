@@ -18,7 +18,7 @@ export default function Card({
           <Image
             img={img}
             title={title}
-            className="transition-all group-hover:scale-110"
+            className="transition-all hover:scale-110"
           />
         </div>
         <div className="card-content">

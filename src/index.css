@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-slate-300 text-slate-600;
+  }
+}
+
 @layer components {
   #app {
     @apply space-y-8;
@@ -90,7 +96,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-slate-300 text-slate-600;
 }
 
 a:hover {

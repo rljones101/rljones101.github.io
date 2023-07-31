@@ -11,7 +11,7 @@ export default function CardSkills({ customIcon, icon, title, skills }) {
   }
 
   return (
-    <div className="flex-1 bg-white shadow shadow-gray-300  p-8 border-t-4 border-blue-500">
+    <div className="flex-1 bg-white shadow-lg  p-8 border-t-4 border-blue-500">
       <div>
         {type && iconName && (
           <i className={`fa-${type} fa-${iconName} text-3xl text-blue-500`}></i>

@@ -26,22 +26,12 @@
   min-height: 500px;
 }
 
-#Skills {
-  background: transparent;
-  overflow: hidden;
-  position: relative;
-}
-
-#Skills::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+.skills-and-contact-bg {
   background-color: white;
-  background: url("./assets/hero.svg");
+  background: url("./skills-and-contact-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  transform: rotate(180deg);
 }
 
 .main-content-wrapper {
@@ -52,6 +42,7 @@
   content: "";
   position: fixed;
   inset: 0;
+  background-color: #256de1;
   background: linear-gradient(to top, #256de1, #051437);
   background-position: center;
   background-repeat: repeat;

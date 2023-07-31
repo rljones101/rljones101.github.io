@@ -16,7 +16,7 @@ export default function FeaturedSiteSection() {
           <Image
             img={image}
             title={featuredProject.name}
-            className="shadow-lg shadow-gray-300"
+            className="shadow-lg"
           />
         </Transition>
         <div className="md:flex-auto md:w-32">

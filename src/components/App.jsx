@@ -11,6 +11,46 @@ import FeaturedSiteSection from "./FeaturedSiteSection";
 import PortfolioSection from "./PortfolioSection";
 import SkillsSection from "./SkillsSection";
 import { ProjectsProvider } from "../context/ProjectsProvider";
+import ContactSection from "./ContactSection";
+
+// const arr = [
+//   "p",
+//   "e",
+//   "r",
+//   "f",
+//   "e",
+//   "c",
+//   "t",
+//   " ",
+//   "m",
+//   "a",
+//   "k",
+//   "e",
+//   "s",
+//   " ",
+//   "p",
+//   "r",
+//   "a",
+//   "c",
+//   "t",
+//   "i",
+//   "c",
+//   "e",
+// ];
+
+// function reverseWords(input) {
+//   // join the sting values together
+//   let str = input.join("");
+//   // split on empty string
+//   const arr = str.split(" ");
+//   const newArr = [];
+//   while (arr.length > 0) {
+//     const lastEl = arr.pop();
+//     newArr.push(lastEl);
+//   }
+//   return newArr.join(" ").split("");
+// }
+// console.log(reverseWords(arr));
 
 function App() {
   return (
@@ -26,7 +66,10 @@ function App() {
           <ProficientSkills />
           <FeaturedSiteSection />
           <PortfolioSection />
-          <SkillsSection />
+          <div className="skills-and-contact-bg">
+            <SkillsSection />
+            <ContactSection />
+          </div>
         </Main>
         <Footer />
       </ProjectsProvider>
