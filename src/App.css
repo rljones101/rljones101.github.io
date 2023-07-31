@@ -50,6 +50,19 @@
   z-index: -1;
 }
 
+.main-content-wrapper:after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: white;
+  background: url("./assets/main-bg.svg");
+  background-position: bottom;
+  background-repeat: repeat;
+  background-size: fill;
+  opacity: 0.3;
+  z-index: -1;
+}
+
 .background-gradient-color {
   position: relative;
 }
