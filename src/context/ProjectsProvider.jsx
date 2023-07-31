@@ -33,8 +33,7 @@ const projects = [
     tech: ["Vue 2", "HTML", "Tailwind CSS"],
     description:
       "This is a client portal that was created to allow users to login after events and view specific metrics for live events. Collect analysis based on a date range. Add and edit events. And also control the QR codes that are used during the events.",
-    sourceUrl:
-      "https://gitfront.io/r/rljones101/jXWsu2S5Aek9/ds-metrics-portal/",
+    sourceUrl: "",
     siteUrl: "",
   },
   {
