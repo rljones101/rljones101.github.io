@@ -85,7 +85,7 @@ const Form = () => {
       <label className="uppercase font-bold mb-2">Email</label>
       <input
         type="text"
-        placeholder="Email"
+        placeholder="Your email"
         {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
         className="bg-blue-50 shadow-inner border border-blue-200 py-2 px-4 border-l-4 border-l-blue-500 mb-8"
       />
@@ -96,6 +96,7 @@ const Form = () => {
       <input
         type="text"
         name="name"
+        placeholder="Your name"
         {...register("name", { required: true })}
         className="bg-blue-50 shadow-inner border border-blue-200 py-2 px-4 border-l-4 border-l-blue-500 mb-8"
       />
@@ -104,6 +105,7 @@ const Form = () => {
       <input
         type="text"
         name="subject"
+        placeholder="Add a subject..."
         {...register("subject", { required: true })}
         className="bg-blue-50 shadow-inner border border-blue-200 py-2 px-4 border-l-4 border-l-blue-500 mb-8"
       />
@@ -113,6 +115,7 @@ const Form = () => {
       <label className="uppercase font-bold mb-2">Message</label>
       <textarea
         rows={5}
+        placeholder="Add a message..."
         {...register("message", { required: true })}
         className="bg-blue-50 shadow-inner border border-blue-200 py-2 px-4 border-l-4 border-l-blue-500 mb-8"
       />
