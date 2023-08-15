@@ -86,6 +86,16 @@ const projects = [
     sourceUrl: "https://github.com/rljones101/react-classy-weather-poc",
     siteUrl: "",
   },
+  {
+    id: 9,
+    image: "fast-react-pizza-co.png",
+    name: "Fast React Pizza Co.",
+    tech: ["React", "HTML", "Tailwind CSS", "Redux"],
+    description:
+      "This is a simple project using React, Tailwind CSS and Redux Toolkit. It simulates the idea of users purchasing pizzas, managing their purchases through the menu or via the cart. Setting a priority and showing the aggregated cost.",
+    sourceUrl: "https://github.com/rljones101/react-fast-pizza-co",
+    siteUrl: "",
+  },
 ];
 
 const featuredProject = {

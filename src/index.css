@@ -70,6 +70,10 @@
   .tech-react {
     @apply bg-teal-500;
   }
+
+  .tech-redux {
+    @apply bg-purple-600;
+  }
 }
 
 /* semantic color variables for this project */
