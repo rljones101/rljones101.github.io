@@ -54,7 +54,7 @@ const projects = [
     description:
       "This was a component library to use with mulitple projects that were developed while working at Digital Seat Media. It was created to speed up development time and unify the UI design between all projects.",
     sourceUrl: "https://github.com/rljones101/ds-core-ui-components",
-    siteUrl: "",
+    siteUrl: "https://www.npmjs.com/package/ds-core-ui-components",
   },
   {
     id: 6,
